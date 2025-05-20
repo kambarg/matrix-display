@@ -1,0 +1,19 @@
+# Check the you are in the right directory
+$ pwd
+/home/roamio42/Desktop/gaukhar/matrix_display
+# Clean and build the project
+$ sudo make clean
+$ sudo  make
+
+# Change directory to run examples
+$ cd examples-api-use
+
+# The very first example (from sources)
+$ sudo ./demo -D 9 --led-rows=64 --led-cols=64
+
+# Example with gif file displaying blue eyes aka Eve (from sources)
+$ sudo ./image-example --led-rows=64 --led-cols=64 ../1.gif
+
+# Example with blue eyes puctored pixel by pixel (new)
+$ $ sudo ./eyes-example --led-rows=64 --led-cols=64
+
