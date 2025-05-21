@@ -1,7 +1,7 @@
 CFLAGS=-Wall -O3 -g -Wextra -Wno-unused-parameter
 CXXFLAGS=$(CFLAGS)
-OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o scrolling-text-example.o clock.o ledcat.o input-example.o pixel-mover.o
-BINARIES=demo minimal-example c-example text-example scrolling-text-example clock ledcat input-example pixel-mover
+OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o scrolling-text-example.o clock.o ledcat.o input-example.o pixel-mover.o eyes-example.o
+BINARIES=demo minimal-example c-example text-example scrolling-text-example clock ledcat input-example pixel-mover eyes-example
 
 # Where our library resides. You mostly only need to change the
 # RGB_LIB_DISTRIBUTION, this is where the library is checked out.
@@ -46,6 +46,10 @@ image-example: image-example.o $(RGB_LIBRARY)
 # runtime stuff, you still have to also link -lstdc++
 c-example : c-example.o $(RGB_LIBRARY)
 	$(CC) $< -o $@ $(LDFLAGS) -lstdc++
+
+# Eyes example also needs math library
+eyes-example : eyes-example.o $(RGB_LIBRARY)
+	$(CC) $< -o $@ $(LDFLAGS) -lstdc++ -lm
 
 %.o : %.cc
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) -c -o $@ $<

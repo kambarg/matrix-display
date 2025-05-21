@@ -1,4 +1,3 @@
-import time
 import sys
 import cv2
 import numpy as np
@@ -75,19 +74,9 @@ face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_fronta
 cv2.namedWindow('Camera Feed', cv2.WINDOW_NORMAL)
 cv2.resizeWindow('Camera Feed', 640, 480)
 
-# Run
-face_detected = False
 running = True
 
 while running:
-    # clock.tick(60)
-
-    # for event in pygame.event.get():
-    #     if event.type == pygame.QUIT:
-    #         running = False
-    #     elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-    #         running = False
-
     # Read frame from webcam
     ret, frame = cap.read()
     if not ret:
@@ -99,10 +88,6 @@ while running:
     # Detect faces
     faces = face_cascade.detectMultiScale(gray, 1.1, 4)
     
-    # # Variables for robot's reaction
-    # current_face_x = None
-    # current_face_detected = len(faces) > 0
-
     # Draw rectangles around detected faces
     for (x, y, w, h) in faces:
         # Draw rectangle around face
@@ -112,22 +97,12 @@ while running:
 
     # Show camera feed
     cv2.imshow('Camera Feed', frame)
-    cv2.waitKey(1)  # Required for CV window to update
-
-    # # Process detected faces for robot animation
-    # if current_face_detected:
-    #     # Use the first detected face for eye tracking
-    #     x, y, w, h = faces[0]
-    #     # Calculate relative x position of face (0 to 1)
-    #     current_face_x = (x + w/2) / frame.shape[1]
-    #     # Keep smiling while face is detected
-    #     draw_robot(smile=True, face_x=current_face_x)
-    # else:
-    #     # Stop smiling when face is lost
-    #     draw_robot(smile=False, face_x=None)
+    
+    # Check for 'q' key to quit
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        running = False
 
 # Cleanup
 cap.release()
 cv2.destroyAllWindows()
-pygame.quit()
 sys.exit()
