@@ -36,7 +36,7 @@ $ sudo make install-python
 
 # Run python examples:
 $ cd samples
-$ sudo python3 gif-viewer.py  ../../../1.gif
+$ sudo python3 gif-viewer.py  1.gif
 
 
 4. Running face detection python script
@@ -47,27 +47,29 @@ $ python3 -m venv matrix_venv
 # Activate the virtual environment
 $ source matrix_venv/bin/activate
 
-
-4. Install face detection python library
-
-# Create a new directory for your project (if not already created)
-$ pwd
-~/Desktop/gaukhar/matrix-display
-
-
-
-# Install OpenCV
+# Install opencv package to control usb camera and for haar cascades face detection method
 $ pip install opencv-python
 
-# Install numpy (if not already installed with OpenCV)
-$ pip install numpy
+# Run python script to open usb camera window
+$ python3 face-detection-haar.py
 
-# Install the LED matrix library
-cd bindings/python
-pip install -e .
+# Run script that controls camra, detects face and displays 
+gif picture to the led matrix display when face is detected:
+$ python3 face-detection-gif-display.py
 
-# Make sure you're in the virtual environment (you should see (matrix_venv) in your prompt)
-# Even with venv, we still need sudo for LED matrix GPIO access
-sudo -E env "PATH=$PATH" python3 face-detection-haar.py
+
+5. Troubleshooting Video Camera
+# Check that USB camera is recognized as device in the system:
+$ ls -l /dev/video* && v4l2-ctl --list-devices
+# Your camera should be listed as one of the registered devices /dev/video0, /dev/video1 etc.
+
+# Than check that camera works:
+$ ffplay /dev/video0
+
+#Verify the camera permisions:
+$ groups $USER | grep video
+
+
+
 
 

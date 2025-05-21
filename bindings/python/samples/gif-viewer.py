@@ -21,8 +21,8 @@ except Exception:
 
 # Configuration for the matrix
 options = RGBMatrixOptions()
-options.rows = 32
-options.cols = 32
+options.rows = 64
+options.cols = 64
 options.chain_length = 1
 options.parallel = 1
 options.hardware_mapping = 'regular'  # If you have an Adafruit HAT: 'adafruit-hat'
@@ -36,7 +36,7 @@ for frame_index in range(0, num_frames):
     gif.seek(frame_index)
     # must copy the frame out of the gif, since thumbnail() modifies the image in-place
     frame = gif.copy()
-    frame.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+    frame.thumbnail((matrix.width, matrix.height), Image.BICUBIC)
     canvas = matrix.CreateFrameCanvas()
     canvas.SetImage(frame.convert("RGB"))
     canvases.append(canvas)
