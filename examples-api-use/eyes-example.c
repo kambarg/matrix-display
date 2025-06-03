@@ -47,8 +47,8 @@ int main(int argc, char **argv) {
     led_canvas_get_size(offscreen_canvas, &width, &height);
 
     // Define eye centers (assuming 32x32 matrix)
-    int eye1_x = width / 3;
-    int eye2_x = (2 * width) / 3;
+    int eye1_x = width / 4;
+    int eye2_x = (2 * width) / 4;
     int eye_y = height / 2;
     float eye_radius = height / 4;
 
