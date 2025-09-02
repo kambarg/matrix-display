@@ -5,6 +5,9 @@ $ cd examples-api-use
 $ sudo ./demo -D 9 --led-rows=64 --led-cols=128 --led-slowdown-gpio=4
 $ sudo ./welcome-message --led-rows=64 --led-cols=128 --led-slowdown-gpio=4
 
+$ make image-example
+$ sudo ./image-example --led-rows=64 --led-cols=128 --led-slowdown-gpio=4 ../1.gif
+
 =====================
 
 
