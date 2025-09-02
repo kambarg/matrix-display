@@ -1,11 +1,9 @@
 ==Quick start demo==
 $ cd /home/roamio42/Desktop/gaukhar/matrix-display/
-$ sudo make clean
-$ sudo make
+$ make -C examples-api-use
 $ cd examples-api-use
-$ sudo make
-$ sudo ./demo -D 9 --led-rows=64 --led-cols=64
-$ sudo ./welcome-message --led-rows=64 --led-cols=64
+$ sudo ./demo -D 9 --led-rows=64 --led-cols=128 --led-slowdown-gpio=4
+$ sudo ./welcome-message --led-rows=64 --led-cols=128 --led-slowdown-gpio=4
 
 =====================
 
