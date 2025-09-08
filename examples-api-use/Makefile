@@ -1,7 +1,7 @@
 CFLAGS=-Wall -O3 -g -Wextra -Wno-unused-parameter
 CXXFLAGS=$(CFLAGS)
-OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o scrolling-text-example.o clock.o ledcat.o input-example.o pixel-mover.o welcome-message.o
-BINARIES=demo minimal-example c-example text-example scrolling-text-example clock ledcat input-example pixel-mover welcome-message
+OBJECTS=demo-main.o minimal-example.o c-example.o text-example.o scrolling-text-example.o clock.o ledcat.o input-example.o pixel-mover.o welcome-message.o dual-cube-template.o
+BINARIES=demo minimal-example c-example text-example scrolling-text-example clock ledcat input-example pixel-mover welcome-message dual-cube-template
 
 # Where our library resides. You mostly only need to change the
 # RGB_LIB_DISTRIBUTION, this is where the library is checked out.
@@ -40,6 +40,12 @@ image-example.o : image-example.cc
 	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) $(MAGICK_CXXFLAGS) -c -o $@ $<
 
 image-example: image-example.o $(RGB_LIBRARY)
+	$(CXX) $< -o $@ $(LDFLAGS) $(MAGICK_LDFLAGS)
+
+dual-cube-template.o : dual-cube-template.cc
+	$(CXX) -I$(RGB_INCDIR) $(CXXFLAGS) $(MAGICK_CXXFLAGS) -c -o $@ $<
+
+dual-cube-template: dual-cube-template.o $(RGB_LIBRARY)
 	$(CXX) $< -o $@ $(LDFLAGS) $(MAGICK_LDFLAGS)
 
 # Since the C example uses the C++ library underneath, which depends on C++
