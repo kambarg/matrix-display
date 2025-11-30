@@ -2,11 +2,11 @@
 $ cd /home/roamio42/Desktop/gaukhar/matrix-display/
 $ make -C examples-api-use
 $ cd examples-api-use
-$ sudo ./demo -D 9 --led-rows=64 --led-cols=128 --led-slowdown-gpio=4
-$ sudo ./welcome-message --led-rows=64 --led-cols=128 --led-slowdown-gpio=4
+$ sudo ./demo -D 9 --led-rows=64 --led-cols=128 --led-slowdown-gpio=4  --led-no-hardware-pulse
+$ sudo ./welcome-message --led-rows=64 --led-cols=128 --led-slowdown-gpio=4  --led-no-hardware-pulse
 
 $ make image-example
-$ sudo ./image-example --led-rows=64 --led-cols=128 --led-slowdown-gpio=4 ../1.gif
+$ sudo ./image-example --led-rows=64 --led-cols=128 --led-slowdown-gpio=4  --led-no-hardware-pulse ../1.gif
 
 =====================
 
